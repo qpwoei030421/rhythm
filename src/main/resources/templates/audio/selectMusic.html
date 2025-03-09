@@ -1,0 +1,39 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="head">
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}" />
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}" />
+    <title>Select Music</title>
+</div>
+
+<div layout:fragment="content" class="container my-3">
+    <table border="1" class="table table-hover table-striped">
+        <tr class="table table-dark">
+            <th>번호</th>
+            <th>음악</th>
+            <th width="150">플레이 하기</th>
+        </tr>
+        <div th:if="${musics.isEmpty}">
+            <tr>
+                <td colspan="3">업로드한 음악이 없습니다.</td>
+            </tr>
+            <tr>
+                <td colspan="3"><a href="/audio/audioUpload">음악 업로드하러 가기</a></td>
+            </tr>
+        </div>
+        <div th:unless="${musics.isEmpty}">
+            <tr th:each="music : ${musics}">
+                <td th:text="${music.id}"></td>
+                <td th:text="${music.musicTitle.split('_')[1]}"></td>
+                <td><button class="btn btn-outline-primary"
+                        th:onclick="|location.href='@{/rhythm/gameBoard?(musicTitle=${music.musicTitle})}'|">플레이</button>
+                </td>
+            </tr>
+        </div>
+
+    </table>
+</div>
+
+<div layout:fragment="scripts">
+</div>
+
+</html>

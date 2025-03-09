@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ex.rhythm.mapper.BeatMapper">
+
+    <!-- 비트 저장 -->
+    <insert id="insertBeat">
+        INSERT INTO BEATS(music_title, time_stamp, d, f, j, k)
+        VALUES (#{musicTitle}, #{timeStamp}, #{d}, #{f}, #{j}, #{k})
+    </insert>
+
+    <!-- 한 곡의 비트 조회 -->
+    <select id="selectMusic" resultType="com.ex.rhythm.dto.BeatDTO">
+        SELECT id, time_stamp AS timeStamp, d, f, j, k
+        FROM BEATS WHERE music_title = #{musicTitle} ORDER BY time_stamp
+    </select>
+
+</mapper>

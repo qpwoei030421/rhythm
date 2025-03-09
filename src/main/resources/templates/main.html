@@ -1,0 +1,35 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="head">
+    <title>Rhythm GAME</title>
+</div>
+
+<div layout:fragment="content" class="container my-3">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <div class=" text-center rounded-5 bg-warning bg-gradient w-100">
+                <p class="fw-bold fs-1 text-light">Rhythm GAME</p>
+            </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <button onclick="window.location='/rhythm/selectMusic'" class="btn btn-primary w-100">게임하기</button>
+        </div>
+        <div class="col-4"></div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <button onclick="window.location='/audio/audioUpload'" class="btn btn-primary w-100">음악 업로드</button>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
+
+<div layout:fragment="scripts">
+</div>
+
+</html>

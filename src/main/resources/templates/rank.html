@@ -1,0 +1,32 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="head">
+    <title>RANK</title>
+</div>
+
+<div layout:fragment="content" class="container my-3">
+    <table border="1" class="table table-hover table-striped">
+        <tr class="table table-dark">
+            <th>순위</th>
+            <th>음악</th>
+            <th>점수</th>
+            <th>최대 콤보</th>
+            <th>닉네임</th>
+        </tr>
+        <div th:if="${ranks.isEmpty}">
+            <tr>
+                <td colspan="3">등록된 점수가 없습니다.</td>
+
+            </tr>
+        </div>
+        <div th:unless="${ranks.isEmpty}">
+            <tr th:each="rank, loop : ${ranks}">
+                <td th:text="${loop.count}"></td>
+                <td th:text="${musics[loop.index].musicTitle.split('_')[1]}">
+                </td>
+                <td th:text="${rank.score}"></td>
+                <td th:text="${rank.maxCombo}"></td>
+                <td th:text="${users[loop.index].userNick}"></td>
+            </tr>
+        </div>
+    </table>
+</div>

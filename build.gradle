@@ -1,0 +1,65 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.4.3'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.ex'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+	maven {
+        name = "TarsosDSP repository"
+        url = "https://mvn.0110.be/releases"
+    }
+}
+
+dependencies {
+	// spring boot
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	// mybatis
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.4'
+	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.4'
+
+	// thymeleaf
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
+
+	// lombok
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// devtools
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	// mySQL
+	runtimeOnly 'com.mysql:mysql-connector-j'
+
+	// 음악 파일 분석
+	implementation 'be.tarsos.dsp:core:2.5'
+    implementation 'be.tarsos.dsp:jvm:2.5'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

@@ -1,0 +1,21 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="head">
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}" />
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}" />
+    <title>Upload Music</title>
+</div>
+
+<div layout:fragment="content" class="container my-3">
+    <h2>음악 파일 업로드</h2>
+    <h3>최대 100Mb까지 업로드 가능</h3>
+    <input type="file" id="fileInput" accept="audio/*">
+    <button onclick="uploadFile()">업로드</button>
+
+    <p id="uploadStatus"></p>
+
+</div>
+<div layout:fragment="scripts">
+    <script src="../js/audioUpload.js"></script>
+</div>
+
+</html>

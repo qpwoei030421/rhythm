@@ -1,0 +1,40 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="head">
+    <title>GAME OVER</title>
+</div>
+
+<div layout:fragment="content" class="container my-3">
+    <table border="1" class="table table-hover table-striped">
+        <tr>
+            <td width="200">음악</td>
+            <td th:text="${musicTitle.split('_')[1]}"></td>
+        </tr>
+        <tr>
+            <td>점수</td>
+            <td th:text="${score}"></td>
+        </tr>
+        <tr>
+            <td>최대 콤보</td>
+            <td th:text="${maxCombo}"></td>
+        </tr>
+    </table>
+    <div class="container my-3">
+        <div class="row">
+            <div class="col-4">
+                <button class="btn btn-outline-primary" onclick="history.go(-1)">다시 하기</button>
+            </div>
+            <div class="col-4">
+                <button class="btn btn-outline-primary" onclick="window.location.href='/main'">처음으로</button>
+            </div>
+            <div class="col-4">
+                <button class="btn btn-outline-primary"
+                    th:onclick="|location.href='@{/rank/save?(musicTitle=${encodedMusicTitle}, score=${score}, maxCombo=${maxCombo})}'|">점수
+                    저장</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</html>

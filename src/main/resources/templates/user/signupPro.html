@@ -1,0 +1,8 @@
+<script th:if="${result} == 'success'">
+	alert("가입되었습니다.");
+	window.location = "/user/login";
+</script>
+<script th:if="${result} == 'failed'">
+	alert("가입 오류 발생");
+	history.go(-1);
+</script>

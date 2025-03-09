@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ex.rhythm.mapper.UserMusicMapper">
+
+    <!-- 음악 저장 -->
+    <insert id="insertMusic">
+        INSERT INTO USER_MUSICS(user_id, music_title)
+        VALUES (#{userId}, #{musicTitle})
+    </insert>
+
+    <!-- userId로 음악 조회 -->
+    <select id="selectMusicByUserId" resultType="com.ex.rhythm.dto.UserMusicDTO">
+        SELECT id, music_title AS musicTitle
+        FROM USER_MUSICS WHERE user_id = #{userId}
+    </select>
+
+    <!-- id로 음악 삭제 -->
+    <delete id="deleteMusicById">
+        DELETE FROM USER_MUSICS WHERE ID = #{id}
+    </delete>
+
+    <!-- musicTitle로  musicId 조회 -->
+    <select id="selectMusicIdByMusicTitle" resultType="int">
+        SELECT id AS musicId
+        FROM USER_MUSICS WHERE music_title = #{musicTitle}
+    </select>
+
+    <!-- musicId로  음악 조회 -->
+    <select id="selectMusicById" resultType="com.ex.rhythm.dto.UserMusicDTO">
+        SELECT *
+        FROM USER_MUSICS WHERE id = #{id}
+    </select>
+
+</mapper>

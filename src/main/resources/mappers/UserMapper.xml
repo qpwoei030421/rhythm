@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ex.rhythm.mapper.UserMapper">
+
+    <!-- 계정 저장 -->
+    <insert id="insertUser">
+        INSERT INTO USERS(user_email, user_pw, user_nick)
+        VALUES (#{userEmail}, #{userPw}, #{userNick})
+    </insert>
+
+    <!-- id로 계정 조회 -->
+    <select id="selectUserById" resultType="com.ex.rhythm.dto.UserDTO">
+        SELECT id, user_email, user_pw, user_nick
+        FROM USERS WHERE id = #{id}
+    </select>
+
+    <!-- 이메일로 계정 조회 -->
+    <select id="selectUserByEmail" resultType="com.ex.rhythm.dto.UserDTO">
+        SELECT id, user_email, user_pw, user_nick
+        FROM USERS WHERE user_email = #{userEmail}
+    </select>
+
+</mapper>

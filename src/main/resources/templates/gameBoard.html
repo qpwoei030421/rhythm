@@ -1,0 +1,37 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="head">
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}" />
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리듬게임</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #f0f0f0;
+        }
+
+        #gameContainer {
+            width: 800px;
+            height: 600px;
+            border: 2px solid #fff;
+            margin: 0 auto;
+        }
+    </style>
+</div>
+
+<div layout:fragment="content" class="container my-3">
+
+    <button class="btn btn-primary d-block mx-auto" id="startButton"
+        onclick="document.getElementById('startButton').disabled=`true`">게임
+        시작</button>
+    <div id="gameContainer"></div>
+
+</div>
+<div layout:fragment="scripts">
+    <script src="../js/matter.js"></script>
+    <script src="../js/gameBoardScript.js"></script>
+</div>
+
+</html>

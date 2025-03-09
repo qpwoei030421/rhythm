@@ -1,0 +1,28 @@
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container px-5">
+        <a class="navbar-brand" th:href="@{/main}">Rhythm GAME</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+                class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item" sec:authorize="isAnonymous()">
+                    <a class="nav-link" th:href="@{/user/login}">로그인</a>
+                </li>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <a class="nav-link" th:href="@{/user/logout}">로그아웃</a>
+                </li>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <a class="nav-link" th:href="@{/rhythm/selectMusic}">게임하기</a>
+                </li>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <a class="nav-link" th:href="@{/music/myMusic}">내 음악 관리</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/rank/list}">랭킹 보기</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
